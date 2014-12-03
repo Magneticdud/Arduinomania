@@ -16,9 +16,12 @@
 
 // the setup function runs once when you press reset or power the board
 void setup() {
+  // initialize digital pin 10 and 13 as an output.
   pinMode(10, OUTPUT);
-  // initialize digital pin 13 as an output.
   pinMode(13, OUTPUT);
+  //enable serial communication
+  Serial.begin(9600);
+  Serial.println("SERIAL.COMMUNICATION.ENABLED.");
 }
 
 // the loop function runs over and over again forever
