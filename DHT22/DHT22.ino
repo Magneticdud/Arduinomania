@@ -9,14 +9,17 @@ DHT dht(DHTPIN, DHTTYPE);
 void setup() {
   Serial.begin(9600); 
   Serial.println("Welcome to DHT22!");
- 
+  //LED
+  pinMode(13, OUTPUT);
   dht.begin();
 }
 
 void loop() {
   // Wait a few seconds between measurements.
   delay(2000);
-
+  
+  digitalWrite(13, HIGH);   // turn the LED on when starts reading
+  
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
   float h = dht.readHumidity();
@@ -35,4 +38,5 @@ void loop() {
   Serial.print("Temperature: "); 
   Serial.print(t);
   Serial.println(" *C ");
+  digitalWrite(13, LOW);   // turn the LED off when no reading.
 }
