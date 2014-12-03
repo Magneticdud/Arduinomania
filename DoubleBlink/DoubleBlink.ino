@@ -11,6 +11,7 @@ void setup() {
   pinMode(13, OUTPUT);
   //enable serial communication
   Serial.begin(9600);
+  //in this way we know when the loop starts
   Serial.println("SERIAL.COMMUNICATION.ENABLED.");
 }
 
