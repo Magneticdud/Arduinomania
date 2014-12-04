@@ -69,7 +69,7 @@ void loop() {
   if (t>=30 && t<35) {
     digitalWrite(4, HIGH);
   }
-  if (t<=35) {
+  if (t>=35) {
     digitalWrite(3, HIGH);
   }
 }
