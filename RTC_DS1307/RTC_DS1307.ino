@@ -15,7 +15,7 @@ void setup () {
     Serial.println("RTC is NOT running!");
     // following line sets the RTC to the date & time this sketch was compiled
     // uncomment it & upload to set the time, date and start run the RTC!
-    //RTC.adjust(DateTime(__DATE__, __TIME__));
+    RTC.adjust(DateTime(__DATE__, __TIME__));
   }
 
 }
