@@ -1,6 +1,7 @@
 //let's log the temperature!
 //SD shield + RTC libs:
 #include <SD.h>
+#include <SPI.h>
 #include <Wire.h>
 #include <RTClib.h>
 
