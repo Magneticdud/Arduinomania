@@ -25,51 +25,51 @@ File logfile;
 
 void error(char *str)
 {
-	Serial.print("Errore: ");
-	Serial.println(str);
+  Serial.print("Errore: ");
+  Serial.println(str);
 
-	//hang forever
-	while(1);
+  //hang forever
+  while(1);
 }
 
 void setup(void)
 {
-	Serial.begin(9600);
-	Serial.println();
+  Serial.begin(9600);
+  Serial.println();
 
-	#if WAIT_TO_START
-		Serial.println("Premere un tasto per iniziare");
-		while (!Serial.available());
-	#endif
+  #if WAIT_TO_START
+    Serial.println("Premere un tasto per iniziare");
+    while (!Serial.available());
+  #endif
 
-	Serial.print("Inizializzazione lettore SD...");
-	pinMode(10, OUTPUT);
-	if (!SD.begin(chipSelect)) {
-		error(" carta non riconosciuta");
-	}
-	Serial.println(" eseguita con successo");		//continua dal discorso precedente
+  Serial.print("Inizializzazione lettore SD...");
+  pinMode(10, OUTPUT);
+  if (!SD.begin(chipSelect)) {
+    error(" carta non riconosciuta");
+  }
+  Serial.println(" eseguita con successo");		//continua dal discorso precedente
 
-	//crea un nuovo file
-	char filename[] = "MYLOG00.TXT";
-	//aggiunge un numero se il file esiste
-	//WONT WORK IF MORE THAN 100 FILES!!!
-	for (uint8_t i = 0; i < 100; i++){
-		filename[5] = i/10 + '0';
-		filename[6] = i%10 + '0';
-		if (!SD.exists(filename)){
-			logfile = SD.open(filename, FILE_WRITE);
-			break; //esce dal loop!
-		}
-	}
+  //crea un nuovo file
+  char filename[] = "MYLOG00.TXT";
+  //aggiunge un numero se il file esiste
+  //WONT WORK IF MORE THAN 100 FILES!!!
+  for (uint8_t i = 0; i < 100; i++){
+    filename[5] = i/10 + '0';
+    filename[6] = i%10 + '0';
+    if (!SD.exists(filename)){
+      logfile = SD.open(filename, FILE_WRITE);
+      break; //esce dal loop!
+    }
+  }
 
-	if (!logfile){
-		error("Impossibile creare il file - hai più di 100 files?");
-	}
+  if (!logfile){
+    error("Impossibile creare il file - hai più di 100 files?");
+  }
 
-	Serial.print("Logging to: ");
-	Serial.println(filename);
+  Serial.print("Logging to: ");
+  Serial.println(filename);
 
- // connessione al chip RTC
+  // connessione al chip RTC
   Wire.begin();  
   if (!RTC.begin()) {
     logfile.println("RTC failed");
