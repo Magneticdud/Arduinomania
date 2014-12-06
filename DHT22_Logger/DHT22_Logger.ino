@@ -14,7 +14,7 @@ uint32_t syncTime = 0; //when it has last synced (never)
 #define ECHO_TO_SERIAL 1
 #define WAIT_TO_START 0	//wait  for serial input
 
-RS_DS1307 RTC;
+RTC_DS1307 RTC;
 
 //chip for data logging
 const int chipSelect = 10;
@@ -54,7 +54,7 @@ void setup(void)
 	//WONT WORK IF MORE THAN 100 FILES!!!
 	for (uint8_t i = 0; i < 100; i++){
 		filename[5] = i/10 + '0';
-		filename[6] = i%10 + '0':
+		filename[6] = i%10 + '0';
 		if (!SD.exists(filename)){
 			logfile = SD.open(filename, FILE_WRITE);
 			break; //esce dal loop!
@@ -148,4 +148,3 @@ void loop(void)
 		//close file
 		logfile.flush();
 }
-	
