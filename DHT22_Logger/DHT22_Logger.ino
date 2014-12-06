@@ -63,26 +63,26 @@ void setup(void)
 	}
 
 	if (!logfile){
-		error("Impossibile creare il file - hai più di 100 files?");
+		error("Impossibile creare il file - hai piÃ¹ di 100 files?");
 	}
 
 	Serial.print("Logging to: ");
 	Serial.println(filename);
 
-	//connessione al chip RTC
-	Wire.begin();
-	if (!RTC.begin()){
-		logfile.println("RTC FAIL!");
-		#if ECHO_TO_SERIAL
-			Serial.println("RTC FAIL!");
-		#endif
-	}
+ // connessione al chip RTC
+  Wire.begin();  
+  if (!RTC.begin()) {
+    logfile.println("RTC failed");
+  #if ECHO_TO_SERIAL
+      Serial.println("RTC failed");
+  #endif  //ECHO_TO_SERIAL
+  }
 
-	//prima riga del file CSV
-	logfile.println("millis,stamp,datetime");
-	#if ECHO_TO_SERIAL
-			Serial.println("millis,stamp,datetime");
-	#endif
+  //prima riga del file CSV
+  logfile.println("millis,stamp,datetime");
+  #if ECHO_TO_SERIAL
+    Serial.println("millis,stamp,datetime");
+  #endif
 }
 
 void loop(void)
