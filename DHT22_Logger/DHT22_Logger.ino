@@ -86,66 +86,74 @@ void setup(void)
 }
 
 void loop(void)
-	{
-		DateTime now;
-		//ritardo programmato
-		delay((LOG_INTERVAL-1)-(millis()%LOG_INTERVAL));
+{
+  DateTime now;
+  //ritardo programmato
+  delay((LOG_INTERVAL-1)-(millis()%LOG_INTERVAL));
+  
+  //log milliseconds since start
+  uint32_t m = millis();
+  logfile.print(m);
+  logfile.print(", ");
+  #if ECHO_TO_SERIAL
+    Serial.println(m);
+    Serial.println(", ");
+  #endif
+  
+  //che ore sono?
+  now = RTC.now();
+  //scrivi che ore sono
+  logfile.print(now.unixtime());  //secondi dal 1/1/1970
+  logfile.print(", ");
+  logfile.print('"');
+  logfile.print(now.year(), DEC);
+  logfile.print("/");
+  logfile.print(now.month(), DEC);
+  logfile.print("/");
+  logfile.print(now.day(), DEC);
+  logfile.print(" ");
+  logfile.print(now.hour(), DEC);
+  logfile.print(":");
+  logfile.print(now.minute(), DEC);
+  logfile.print(":");
+  logfile.print(now.second(), DEC);
+  logfile.print('"');
+  #if ECHO_TO_SERIAL
+    Serial.print(now.unixtime());  //secondi dal 1/1/1970
+    Serial.print(", ");
+    Serial.print('"');
+    Serial.print(now.year(), DEC);
+    Serial.print("/");
+    Serial.print(now.month(), DEC);
+    Serial.print("/");
+    Serial.print(now.day(), DEC);
+    Serial.print(" ");
+    Serial.print(now.hour(), DEC);
+    Serial.print(":");
+    Serial.print(now.minute(), DEC);
+    Serial.print(":");
+    Serial.print(now.second(), DEC);
+    Serial.print('"');
+  #endif
+  
+  //newline
+  logfile.println();
+  #if ECHO_TO_SERIAL
+    Serial.println();
+  #endif
+  
+  //write file
+  if ((millis() - syncTime) < SYNC_INTERVAL) return;
+    syncTime = millis();
+  //close file
+  logfile.flush();
+}
 
-		//log milliseconds since start
-		uint32_t m = millis();
-		logfile.print(m);
-		logfile.print(", ");
-		#if ECHO_TO_SERIAL
-			Serial.println(m);
-			Serial.println(", ");
-		#endif
-
-		//che ore sono?
-		now = RTC.now();
-		//scrivi che ore sono
-		logfile.print(now.unixtime());  //secondi dal 1/1/1970
-		logfile.print(", ");
-		logfile.print('"');
-		logfile.print(now.year(), DEC);
-		logfile.print("/");
-		logfile.print(now.month(), DEC);
-		logfile.print("/");
-		logfile.print(now.day(), DEC);
-		logfile.print(" ");
-		logfile.print(now.hour(), DEC);
-		logfile.print(":");
-		logfile.print(now.minute(), DEC);
-		logfile.print(":");
-		logfile.print(now.second(), DEC);
-		logfile.print('"');
-		#if ECHO_TO_SERIAL
-			Serial.print(now.unixtime());  //secondi dal 1/1/1970
-			Serial.print(", ");
-			Serial.print('"');
-			Serial.print(now.year(), DEC);
-			Serial.print("/");
-			Serial.print(now.month(), DEC);
-			Serial.print("/");
-			Serial.print(now.day(), DEC);
-			Serial.print(" ");
-			Serial.print(now.hour(), DEC);
-			Serial.print(":");
-			Serial.print(now.minute(), DEC);
-			Serial.print(":");
-			Serial.print(now.second(), DEC);
-			Serial.print('"');
-		#endif
-
-		//newline
-		logfile.println();
-		#if ECHO_TO_SERIAL
-			Serial.println();
-		#endif
-
-		//write file
-		if ((millis() - syncTime) < SYNC_INTERVAL) return;
-		syncTime = millis();
-
-		//close file
-		logfile.flush();
+void shutdownEverything(){
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
 }
