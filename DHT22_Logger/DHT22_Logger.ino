@@ -173,7 +173,6 @@ void loop(void)
   Serial.print("Temperature: "); 
   Serial.print(t);
   Serial.println(" *C ");
-  digitalWrite(13, LOW);   // turn the LED off when no reading.
   shutdownEverything();
   if (t<15) {
     digitalWrite(8, HIGH);
@@ -202,9 +201,10 @@ void loop(void)
   
   //write file
   if ((millis() - syncTime) < SYNC_INTERVAL) return;
-    syncTime = millis();
+  syncTime = millis();
   //close file
   logfile.flush();
+  digitalWrite(13, LOW);   // turn the LED off when saved the file.; the led is ON until there's unsaved data
 }
 
 void shutdownEverything(){
