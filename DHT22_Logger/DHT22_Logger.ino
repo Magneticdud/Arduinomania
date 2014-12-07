@@ -96,9 +96,9 @@ void setup(void)
   }
 
   //prima riga del file CSV
-  logfile.println("millis,stamp,datetime");
+  logfile.println("millis,stamp,datetime,humidity,temperature");
   #if ECHO_TO_SERIAL
-    Serial.println("millis,stamp,datetime");
+    Serial.println("millis,stamp,datetime,humidity,temperature");
   #endif
 }
 
@@ -167,12 +167,11 @@ void loop(void)
     return;
   }
 
-  Serial.print("Humidity: "); 
-  Serial.print(h);
-  Serial.print(" %\t");
-  Serial.print("Temperature: "); 
-  Serial.print(t);
-  Serial.println(" *C ");
+  logfile.print(", ");
+  logfile.print(h);  //umidita
+  logfile.print(", ");
+  logfile.print(t);  //temperatura
+
   shutdownEverything();
   if (t<15) {
     digitalWrite(8, HIGH);
