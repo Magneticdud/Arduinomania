@@ -4,9 +4,17 @@
 #include <SPI.h>
 #include <Wire.h>
 #include <RTClib.h>
+#include <DHT.h>
+
+#define DHTPIN 2          // what pin we're connected to
+#define DHTTYPE DHT22
+
+// Initialize DHT sensor for normal 16mhz Arduino
+DHT dht(DHTPIN, DHTTYPE);
 
 //how much i wait?
-#define LOG_INTERVAL 1000
+//at least 2000 because the sensor is slow - i do 5 seconds
+#define LOG_INTERVAL 5000
 
 //how much i wait before writing?
 #define SYNC_INTERVAL 10000
@@ -36,6 +44,15 @@ void setup(void)
 {
   Serial.begin(9600);
   Serial.println();
+  //LED
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(13, OUTPUT);
+  dht.begin();
 
   #if WAIT_TO_START
     Serial.println("Premere un tasto per iniziare");
@@ -135,6 +152,47 @@ void loop(void)
     Serial.print(now.second(), DEC);
     Serial.print('"');
   #endif
+  
+  digitalWrite(13, HIGH);   // turn the LED on when starts reading
+  
+  // Reading temperature or humidity takes about 250 milliseconds!
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float h = dht.readHumidity();
+  // Read temperature as Celsius
+  float t = dht.readTemperature();
+  
+  // Check if any reads failed and exit early (to try again).
+  if (isnan(h) || isnan(t)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+
+  Serial.print("Humidity: "); 
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperature: "); 
+  Serial.print(t);
+  Serial.println(" *C ");
+  digitalWrite(13, LOW);   // turn the LED off when no reading.
+  shutdownEverything();
+  if (t<15) {
+    digitalWrite(8, HIGH);
+  }
+  if (t>=15 && t<20) {
+    digitalWrite(7, HIGH);
+  }
+  if (t>=20 && t<25) {
+    digitalWrite(6, HIGH);
+  }
+  if (t>=25 && t<30) {
+    digitalWrite(5, HIGH);
+  }
+  if (t>=30 && t<35) {
+    digitalWrite(4, HIGH);
+  }
+  if (t>=35) {
+    digitalWrite(3, HIGH);
+  }
   
   //newline
   logfile.println();
