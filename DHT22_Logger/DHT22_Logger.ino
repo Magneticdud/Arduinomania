@@ -98,9 +98,11 @@ void setup(void)
   }
 
   //prima riga del file CSV
-  logfile.println("millis,stamp,datetime,humidity,temperature");
+  //logfile.println("millis,stamp,datetime,humidity,temperature");
+  logfile.println("millis,humidity,temperature");
   #if ECHO_TO_SERIAL
-    Serial.println("millis,stamp,datetime,humidity,temperature");
+    //Serial.println("millis,stamp,datetime,humidity,temperature");
+    Serial.println("millis,humidity,temperature");
   #endif
 }
 
