@@ -87,12 +87,15 @@ void setup(void)
   Serial.println(filename);
 
   // connessione al chip RTC
-  Wire.begin();  
-  if (!RTC.begin()) {
-    logfile.println("RTC failed");
-  #if ECHO_TO_SERIAL
-      Serial.println("RTC failed");
-  #endif  //ECHO_TO_SERIAL
+  Wire.begin();
+  RTC.begin();
+  if (! RTC.isrunning()) {
+    logfile.println("RTC is NOT running!");
+    // following line sets the RTC to the date & time this sketch was compiled
+    RTC.adjust(DateTime(__DATE__, __TIME__));
+    #if ECHO_TO_SERIAL
+      Serial.println("RTC is NOT running!");
+    #endif  //ECHO_TO_SERIAL
   }
 
   //prima riga del file CSV
