@@ -137,6 +137,7 @@ void loop(void)
   logfile.print(":");
   logfile.print(now.second(), DEC);
   logfile.print('"');
+  logfile.print(", ");
   #if ECHO_TO_SERIAL
     Serial.print(now.unixtime());  //secondi dal 1/1/1970
     Serial.print(", ");
@@ -153,6 +154,7 @@ void loop(void)
     Serial.print(":");
     Serial.print(now.second(), DEC);
     Serial.print('"');
+    Serial.print(", ");
   #endif
   
   // Reading temperature or humidity takes about 250 milliseconds!
@@ -166,13 +168,11 @@ void loop(void)
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-
-  logfile.print(", ");
+  
   logfile.print(h);  //umidita
   logfile.print(", ");
   logfile.print(t);  //temperatura
   #if ECHO_TO_SERIAL
-    Serial.print(", ");
     Serial.print(h);  //umidita
     Serial.print(", ");
     Serial.print(t);  //temperatura
