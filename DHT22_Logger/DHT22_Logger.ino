@@ -119,6 +119,7 @@ void loop(void)
     Serial.print(", ");
   #endif
   
+  /*
   //che ore sono?
   now = RTC.now();
   //scrivi che ore sono
@@ -156,6 +157,7 @@ void loop(void)
     Serial.print('"');
     Serial.print(", ");
   #endif
+  */
   
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
