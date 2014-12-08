@@ -92,7 +92,7 @@ void setup(void)
   if (! RTC.isrunning()) {
     logfile.println("RTC is NOT running!");
     // following line sets the RTC to the date & time this sketch was compiled
-    RTC.adjust(DateTime(__DATE__, __TIME__));
+    //RTC.adjust(DateTime(__DATE__, __TIME__));
     #if ECHO_TO_SERIAL
       Serial.println("RTC is NOT running!");
     #endif  //ECHO_TO_SERIAL
