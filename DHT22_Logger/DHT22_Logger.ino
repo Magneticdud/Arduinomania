@@ -51,7 +51,6 @@ void setup(void)
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
   pinMode(8, OUTPUT);
-  pinMode(13, OUTPUT);
   dht.begin();
 
   #if WAIT_TO_START
@@ -156,8 +155,6 @@ void loop(void)
     Serial.print('"');
   #endif
   
-  digitalWrite(13, HIGH);   // turn the LED on when starts reading
-  
   // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
   float h = dht.readHumidity();
@@ -212,7 +209,6 @@ void loop(void)
   syncTime = millis();
   //close file
   logfile.flush();
-  digitalWrite(13, LOW);   // turn the LED off when saved the file.; the led is ON until there's unsaved data
 }
 
 void shutdownEverything(){
