@@ -113,8 +113,8 @@ void loop(void)
   logfile.print(m);
   logfile.print(", ");
   #if ECHO_TO_SERIAL
-    Serial.println(m);
-    Serial.println(", ");
+    Serial.print(m);
+    Serial.print(", ");
   #endif
   
   //che ore sono?
