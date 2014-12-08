@@ -171,6 +171,12 @@ void loop(void)
   logfile.print(h);  //umidita
   logfile.print(", ");
   logfile.print(t);  //temperatura
+  #if ECHO_TO_SERIAL
+    Serial.print(", ");
+    Serial.print(h);  //umidita
+    Serial.print(", ");
+    Serial.print(t);  //temperatura
+  #endif  //ECHO_TO_SERIAL
 
   shutdownEverything();
   if (t<15) {
