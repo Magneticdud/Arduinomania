@@ -117,10 +117,65 @@ void setup() {
   display.display();
   delay(2000);
   display.clearDisplay();
+  
+  // miniature bitmap display
+  display.clearDisplay();
+  display.drawBitmap(30, 16,  logo16_glcd_bmp, 16, 16, 1);
+  display.display();
+
+  // invert the display
+  display.invertDisplay(true);
+  delay(1000); 
+  display.invertDisplay(false);
+  delay(1000);
+
+  // draw a bitmap icon and 'animate' movement
+  testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_WIDTH, LOGO16_GLCD_HEIGHT);
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
+}
+
+void testdrawbitmap(const uint8_t *bitmap, uint8_t w, uint8_t h) {
+  uint8_t icons[NUMFLAKES][3];
+  srandom(666);     // whatever seed
+ 
+  // initialize
+  for (uint8_t f=0; f< NUMFLAKES; f++) {
+    icons[f][XPOS] = random() % display.width();
+    icons[f][YPOS] = 0;
+    icons[f][DELTAY] = random() % 5 + 1;
+    
+    Serial.print("x: ");
+    Serial.print(icons[f][XPOS], DEC);
+    Serial.print(" y: ");
+    Serial.print(icons[f][YPOS], DEC);
+    Serial.print(" dy: ");
+    Serial.println(icons[f][DELTAY], DEC);
+  }
+
+  while (1) {
+    // draw each icon
+    for (uint8_t f=0; f< NUMFLAKES; f++) {
+      display.drawBitmap(icons[f][XPOS], icons[f][YPOS], logo16_glcd_bmp, w, h, BLACK);
+    }
+    display.display();
+    delay(200);
+    
+    // then erase it + move it
+    for (uint8_t f=0; f< NUMFLAKES; f++) {
+      display.drawBitmap(icons[f][XPOS], icons[f][YPOS],  logo16_glcd_bmp, w, h, WHITE);
+      // move it
+      icons[f][YPOS] += icons[f][DELTAY];
+      // if its gone, reinit
+      if (icons[f][YPOS] > display.height()) {
+	icons[f][XPOS] = random() % display.width();
+	icons[f][YPOS] = 0;
+	icons[f][DELTAY] = random() % 5 + 1;
+      }
+    }
+   }
 }
