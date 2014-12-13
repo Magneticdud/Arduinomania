@@ -118,6 +118,20 @@ void setup() {
   display.display();
   delay(5000);
   display.clearDisplay();
+  
+  display.setTextSize(1);
+  display.setTextColor(BLACK);
+  display.setCursor(0,0);
+  display.println("Ciao!");
+  display.setTextColor(WHITE, BLACK); // 'inverted' text
+  display.setTextSize(2);
+  display.println("Ciao!");
+  display.setTextSize(3);
+  display.setTextColor(BLACK);
+  display.print("Ciao!");
+  display.display();
+  delay(5000);
+  display.clearDisplay();
 
   // draw a bitmap icon and 'animate' movement
   testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_WIDTH, LOGO16_GLCD_HEIGHT);
