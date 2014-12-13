@@ -116,19 +116,8 @@ void setup() {
 
   display.drawBitmap(0, 0, dandandin_bmp, 84, 48, BLACK);
   display.display();
-  delay(2000);
+  delay(5000);
   display.clearDisplay();
-  
-  // miniature bitmap display
-  display.clearDisplay();
-  display.drawBitmap(30, 16,  logo16_glcd_bmp, 16, 16, 1);
-  display.display();
-
-  // invert the display
-  display.invertDisplay(true);
-  delay(1000); 
-  display.invertDisplay(false);
-  delay(1000);
 
   // draw a bitmap icon and 'animate' movement
   testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_WIDTH, LOGO16_GLCD_HEIGHT);
