@@ -1,7 +1,10 @@
 //LCD code from Adafruit
+//buzzer code from http://www.multiwingspan.co.uk/arduino.php?page=buzzer3
+
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
+#include <note.h>
 
 // Software SPI (slower updates, more flexible pin options):
 // pin 7 - Serial clock out (SCLK)
@@ -20,6 +23,14 @@ Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
 // Adafruit_PCD8544 display = Adafruit_PCD8544(5, 4, 3);
 // Note with hardware SPI MISO and SS pins aren't used but will still be read
 // and written to during SPI transfer.  Be careful sharing these pins!
+
+const int rest = 0;
+const int buzzerPin = 8;
+int tempo = 150;
+
+int tune[] = {n_C4, n_G3, n_G3, n_A3, n_G3, 0, n_B3, n_C4};
+int beats[] = { 2, 1, 1, 2, 2, 2, 2, 2};
+int tunelength = 8;
 
 #define NUMFLAKES 10
 #define XPOS 0
@@ -103,6 +114,7 @@ static const unsigned char PROGMEM dandandin_bmp[] =
 
 
 void setup() {
+  pinMode(buzzerPin, OUTPUT);
   // put your setup code here, to run once:
   display.begin();
   // init done
@@ -117,6 +129,19 @@ void setup() {
 
   display.drawBitmap(0, 0, dandandin_bmp, 84, 48, BLACK);
   display.display();
+  for (int i =0;i<tunelength;i++)
+  {
+    if (tune[i]==rest)
+    {
+      delay(beats[i]*tempo);
+    } 
+    else
+    {
+      tone(buzzerPin, tune[i], beats[i]*tempo);
+      delay(beats[i]*tempo); 
+    }
+    delay(tempo/10);
+  }
   delay(5000);
   display.clearDisplay();
   
