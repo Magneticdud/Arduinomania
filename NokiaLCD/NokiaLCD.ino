@@ -28,9 +28,9 @@ const int rest = 0;
 const int buzzerPin = 8;
 int tempo = 150;
 
-int tune[] = {n_C4, n_G3, n_G3, n_A3, n_G3, 0, n_B3, n_C4};
-int beats[] = { 2, 1, 1, 2, 2, 2, 2, 2};
-int tunelength = 8;
+int tune[] = {n_A3, n_B3, n_C4, n_G3, n_G3, n_D4};
+int beats[] = { 1, 2, 8, 1, 2, 8};
+int tunelength = 6;
 
 #define NUMFLAKES 10
 #define XPOS 0
@@ -148,13 +148,13 @@ void setup() {
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0,0);
-  display.println("Ciao!");
+  display.println("Let it goooo");
   display.setTextColor(WHITE, BLACK); // 'inverted' text
   display.setTextSize(2);
-  display.println("Ciao!");
+  display.println("Let it");
   display.setTextSize(3);
   display.setTextColor(BLACK);
-  display.print("Ciao!");
+  display.print("gooo");
   display.display();
   delay(5000);
   display.clearDisplay();
