@@ -142,7 +142,7 @@ void setup() {
     }
     delay(tempo/10);
   }
-  delay(5000);
+  //delay(5000);
   display.clearDisplay();
   
   display.setTextSize(1);
