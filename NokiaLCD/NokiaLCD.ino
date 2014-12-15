@@ -28,9 +28,9 @@ const int rest = 0;
 const int buzzerPin = 8;
 int tempo = 150;
 
-int tune[] = {n_A3, n_B3, n_C4, n_G3, n_G3, n_D4};
-int beats[] = { 1, 2, 8, 1, 2, 8};
-int tunelength = 6;
+int tune[] = {n_A3, n_B3, n_C4, n_G3, n_G3, n_D4, 0, n_C4, n_A3, n_A3, n_A3, n_A3, n_B3, n_C4};
+int beats[] = { 1, 2, 8, 1, 2, 8, 2, 2, 1, 1, 2, 2, 2, 8};
+int tunelength = 14;
 
 #define NUMFLAKES 10
 #define XPOS 0
