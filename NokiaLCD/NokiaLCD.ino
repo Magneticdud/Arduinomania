@@ -24,6 +24,8 @@ Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
 // Note with hardware SPI MISO and SS pins aren't used but will still be read
 // and written to during SPI transfer.  Be careful sharing these pins!
 
+const int backlightPin = 9;
+
 const int rest = 0;
 const int buzzerPin = 8;
 int tempo = 150;
@@ -114,6 +116,7 @@ static const unsigned char PROGMEM dandandin_bmp[] =
 
 void setup() {
   pinMode(buzzerPin, OUTPUT);
+  pinMode(backlightPin, OUTPUT);
   // put your setup code here, to run once:
   display.begin();
   // init done
@@ -144,6 +147,7 @@ void setup() {
   //delay(5000);
   display.clearDisplay();
   
+  digitalWrite(backlightPin, HIGH);
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0,0);
@@ -157,6 +161,8 @@ void setup() {
   display.display();
   delay(5000);
   display.clearDisplay();
+  
+  digitalWrite(backlightPin, LOW);
 
   // draw a bitmap icon and 'animate' movement
   testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_WIDTH, LOGO16_GLCD_HEIGHT);
