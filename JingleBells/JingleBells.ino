@@ -15,8 +15,10 @@ int whole = 8;
 void setup() {
   pinMode(speakerPin, OUTPUT);
   pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin,HIGH);
   setuptempo(100);
   playmelody();
+  digitalWrite(ledPin,LOW);
 }
 
 void loop() {
