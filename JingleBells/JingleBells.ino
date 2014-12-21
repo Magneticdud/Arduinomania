@@ -27,8 +27,13 @@ void playNote(char note, int duration) {
 }
 void setup() {
   pinMode(speakerPin, OUTPUT);
+  playmelody();
 }
 void loop() {
+
+}
+
+void playmelody() {
   for (int i = 0; i < length; i++) {
     if (notes[i] == ' ') {
       delay(beats[i] * tempo); // rest
@@ -40,3 +45,4 @@ void loop() {
     delay(tempo / 2); 
   }
 }
+  
