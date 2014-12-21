@@ -1,11 +1,10 @@
 //from https://gist.github.com/elubow/7844436
 
 int speakerPin = 5;
-int length = 26;
-char notes[] = "eeeeeeegcde fffffeeeeddedg";
-int beats[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
- 
-int tempo = 300;
+int length = 29; // the number of notes
+char notes[] = "eeeeeeegcdefffffeeeeddedg"; // a space represents a rest
+int beats[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1 };
+int tempo = 250;
 
 void setup() {
   pinMode(speakerPin, OUTPUT);
