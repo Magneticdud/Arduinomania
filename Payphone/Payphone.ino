@@ -35,6 +35,17 @@ void setup() {
   playmelody2();
   delay(50);
   playmelody4();
+  delay(50);
+  playmelody5();
+  delay(50);
+  playmelody5();
+  delay(50);
+  playmelody6();
+  delay(50);
+  playmelody5();
+  delay(50);
+  playmelody5();
+  playnote(NOTE_G4,quarter);
   digitalWrite(ledPin,LOW);
 }
 
@@ -114,6 +125,32 @@ void playmelody4(){
   playnote(NOTE_FS4,eighth);
   playnote(NOTE_FS4,quarter);
   playnote(NOTE_E4,quarter);
+}
+
+void playmelody5(){
+  /* payphone part 5 */
+  playnote(NOTE_FS4,half);
+  playnote(NOTE_FS4,half);
+  playnote(NOTE_FS4,dottedquarter);
+  playnote(NOTE_FS4,eighth);
+  playnote(NOTE_FS4,quarter);
+  playnote(NOTE_E4,quarter);
+}
+
+void playmelody6(){
+  /* payphone part 6 */
+  playnote(NOTE_FS4,half);
+  playnote(NOTE_FS4,half);
+  playnote(NOTE_FS4,dottedquarter);
+  playnote(NOTE_FS4,eighth);
+  playnote(NOTE_FS4,quarter);
+  playnote(NOTE_G4,quarter);
+  playnote(NOTE_E4,half);
+  playnote(NOTE_CS4,half);
+  playnote(NOTE_CS4,dottedquarter);
+  playnote(NOTE_D4,eighth);
+  playnote(NOTE_D4,quarter);
+  playnote(NOTE_A4,quarter);
 }
 
 void playnote(int note, int duration){
