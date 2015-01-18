@@ -28,6 +28,7 @@ void setup() {
   delay(500);
   playphone3();
   delay(500);
+  
   playphone2();
   delay(500);
   playphone3();
@@ -36,6 +37,7 @@ void setup() {
   delay(50);
   playphone4();
   delay(50);
+  
   playphone5();
   delay(50);
   playphone5();
