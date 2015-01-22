@@ -12,6 +12,7 @@ String UserName64 = "XXXXXXX";
 String Password64 = "XXXXXXX";
 String Sender = "XXXXXXX@x.x";
 String Recipient = "XXXXXXX@x.x";    
+String ServerName = "mandrillapp.com";
 String Subject = "Arduino!!";
 String Body = "Ciao!\nSono Arduino!";
 int time = 5000;
