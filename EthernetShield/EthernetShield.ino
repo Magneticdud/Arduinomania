@@ -61,4 +61,21 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
+void GetResponse() {
+    if (client.available()) {
+         char c = client.read();
+         while (client.available()) { // Store command char by char.
+           ServerResponse +=c;
+           c = client.read();
+         }
+    Serial.println("<<<" + ServerResponse);
+    ServerResponse="";
+  }
+}
+ 
+void SendMsg(String m) {
+   client.println(m);
+   Serial.println(">>>" + m);
+   delay(wait); /* wait for a response */
+   GetResponse();
 }
