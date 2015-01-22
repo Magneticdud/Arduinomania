@@ -14,10 +14,20 @@ String Sender = "XXXXXXX@x.x";
 String Recipient = "XXXXXXX@x.x";    
 String Subject = "Arduino!!";
 String Body = "Ciao!\nSono Arduino!";
+int time = 5000;
+int wait = 1000;
+String ServerResponse="";
+EthernetClient client;
 
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.println("Program started, waiting for router...");
+  delay(time);
+  /* allow the router to identify the Arduino before the Arduino connects to the internet */
+  Serial.println("Starting network module...");
   Ethernet.begin(mac, ip, mydns, gateway);
+  delay(time);
+  Serial.println("connecting...");
 }
 
 void loop() {
