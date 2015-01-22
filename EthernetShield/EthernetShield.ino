@@ -28,6 +28,34 @@ void setup() {
   Ethernet.begin(mac, ip, mydns, gateway);
   delay(time);
   Serial.println("connecting...");
+  if (client.connect(server, 25)) {
+     Serial.println("connected");
+     SendMsg("EHLO " + ServerName); /* say hello*/
+     SendMsg("AUTH LOGIN ");
+     SendMsg(UserName64); /* Username*/
+     SendMsg(Password64); /* Password */
+     SendMsg("MAIL From:<" + Sender +">");
+ /* identify sender */
+     SendMsg("RCPT To:<" + Recipient + ">");
+ /* identify recipient */
+     SendMsg("DATA");
+     SendMsg("To: " + Recipient); 
+/* recipient in message header */
+
+     SendMsg("From: " + Sender); 
+/* seder name in message header */
+
+     SendMsg("Subject: "+ Subject);
+ /* insert subject */
+     SendMsg(""); /* empty line */
+     SendMsg(Body); /* insert body */
+     SendMsg(""); /* empty line */
+     SendMsg("."); /* end mail */
+     SendMsg("QUIT"); /* terminate connection */
+     client.println();
+  } else {
+    Serial.println("connection failed");
+  }
 }
 
 void loop() {
