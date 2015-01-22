@@ -58,9 +58,21 @@ void setup() {
   }
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-
+void loop()
+ {
+  if (client.available()) {
+    char c = client.read();
+    Serial.print(c);
+  }
+  if (!client.connected()) {
+    Serial.println();
+    Serial.println("disconnecting.");
+    client.stop();
+    for( ; ; )
+      ;
+  }
+}
+ 
 void GetResponse() {
     if (client.available()) {
          char c = client.read();
