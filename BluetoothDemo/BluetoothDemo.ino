@@ -1,28 +1,27 @@
-//disconnect hc-06 when uploading
+#include <SoftwareSerial.h>
+//pins for software serial
+const int rxPin = 2;
+const int txPin = 3;
 //pin LED
 const int ledPin = 4;
+SoftwareSerial bluetooth(rxPin, txPin);
 String message; //string that stores the incoming message
  
 void setup()
 {
-  Serial.begin(9600); //set baud rate
+  Serial.begin(9600); //set baud rate for USB serial
+  bluetooth.begin(9600);
   pinMode(ledPin, OUTPUT);
 }
  
 
 void loop() {
-  while(Serial.available())
-  {//while there is data available on the serial monitor
-    message+=char(Serial.read());//store string from serial command
   digitalWrite(ledPin, HIGH);
+  //scrivo e leggo nelle seriali, condividendo i flussi tra le due.
+  if (bluetooth.available()) {
+  Serial.write(bluetooth.read());
   }
-  if(!Serial.available())
-  {
-    if(message!="")
-    {//if data is available
-      Serial.println(message); //show the data
-      message=""; //clear the data
-    }
+  if (Serial.available()) {
+  bluetooth.write(Serial.read());
   }
-  delay(5000); //delay
 }
