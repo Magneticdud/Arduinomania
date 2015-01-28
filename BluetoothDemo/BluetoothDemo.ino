@@ -1,18 +1,20 @@
 //disconnect hc-06 when uploading
+//pin LED
+const int ledPin = 4;
 String message; //string that stores the incoming message
  
 void setup()
 {
   Serial.begin(9600); //set baud rate
-  pinMode(2, OUTPUT);
+  pinMode(ledPin, OUTPUT);
 }
  
 
 void loop() {
-  digitalWrite(2, HIGH);
   while(Serial.available())
   {//while there is data available on the serial monitor
     message+=char(Serial.read());//store string from serial command
+  digitalWrite(ledPin, HIGH);
   }
   if(!Serial.available())
   {
