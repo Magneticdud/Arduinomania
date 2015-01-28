@@ -5,7 +5,7 @@ const int txPin = 3;
 //pin LED
 const int ledPin = 4;
 SoftwareSerial bluetooth(rxPin, txPin);
-String message; //string that stores the incoming message
+int message; //string that stores the incoming message
  
 void setup()
 {
@@ -16,12 +16,18 @@ void setup()
  
 
 void loop() {
-  digitalWrite(ledPin, HIGH);
   //scrivo e leggo nelle seriali, condividendo i flussi tra le due.
   if (bluetooth.available()) {
-  Serial.write(bluetooth.read());
-  }
-  if (Serial.available()) {
-  bluetooth.write(Serial.read());
+    message = bluetooth.read();
+    Serial.println(message);
+    if (message==65){ //capital A
+      digitalWrite(ledPin, LOW);
+    }
+    else if (message==79){ //capital O
+      digitalWrite(ledPin, HIGH);
+    }
+    if (Serial.available()) {
+    bluetooth.write(Serial.read());
+    }
   }
 }
