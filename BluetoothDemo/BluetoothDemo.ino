@@ -5,7 +5,9 @@ const int txPin = 3;
 //pin LED
 const int ledPin = 4;
 SoftwareSerial bluetooth(rxPin, txPin);
-int message; //string that stores the incoming message
+char message; //char incoming on serial
+//String fullcontent = ""; //string that could contain the whole nesage
+
  
 void setup()
 {
@@ -19,11 +21,13 @@ void loop() {
   //scrivo e leggo nelle seriali, condividendo i flussi tra le due.
   if (bluetooth.available()) {
     message = bluetooth.read();
+    //fullcontent.concat(message); //don't need to do this yet - it's from here http://stackoverflow.com/questions/5697047/convert-serial-read-into-a-useable-string-using-arduino
+    
     Serial.println(message);
-    if (message==65){ //capital A
+    if (message=='5'){
       digitalWrite(ledPin, LOW);
     }
-    else if (message==79){ //capital O
+    else if (message=='9'){
       digitalWrite(ledPin, HIGH);
     }
     if (Serial.available()) {
