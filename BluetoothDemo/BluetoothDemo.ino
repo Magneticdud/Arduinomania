@@ -3,9 +3,9 @@
 const int rxPin = 2;
 const int txPin = 3;
 //pin LED
-const int ledPin = 4;
+const int ledPin = 5;
 SoftwareSerial bluetooth(rxPin, txPin);
-char message; //char incoming on serial
+int message; //char or int incoming on serial
 //String fullcontent = ""; //string that could contain the whole nesage
 
  
@@ -24,12 +24,7 @@ void loop() {
     //fullcontent.concat(message); //don't need to do this yet - it's from here http://stackoverflow.com/questions/5697047/convert-serial-read-into-a-useable-string-using-arduino
     
     Serial.println(message);
-    if (message=='5'){
-      digitalWrite(ledPin, LOW);
-    }
-    else if (message=='9'){
-      digitalWrite(ledPin, HIGH);
-    }
+    analogWrite(ledPin, message);
     if (Serial.available()) {
     bluetooth.write(Serial.read());
     }
