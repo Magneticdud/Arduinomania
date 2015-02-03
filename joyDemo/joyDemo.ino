@@ -1,3 +1,6 @@
+//Demo for Arduino PS2 joypad breakout
+//$1.66 from here http://bit.ly/1vTY4pa
+
 int xPin = A0;
 int yPin = A1;
 int buttonPin = 5;
