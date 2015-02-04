@@ -1,0 +1,5 @@
+D0-D1 (UART) ore D2-D3 (soft serial)
+Or central jumper pin to TX1 on MEGA
+D7 incoming call interrupt (unconnected jumper)
+D8 power key
+D9 NRESET
