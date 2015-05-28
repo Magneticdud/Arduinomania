@@ -6,7 +6,7 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
   digitalWrite(7, HIGH);
-  delay(1000);
+  delay(10000);
   digitalWrite(7, LOW);
-  delay(1000);
+  delay(10000);
 }
