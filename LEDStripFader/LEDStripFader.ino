@@ -16,6 +16,10 @@ void setup() {
  
  
 void loop() {
+  colorfade();
+}
+
+void colorfade() {
   int r, g, b;
  
   // fade from blue to violet
