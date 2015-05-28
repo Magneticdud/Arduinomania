@@ -16,7 +16,10 @@ void setup() {
  
  
 void loop() {
-  colorfade();
+  //colorfade();
+  analogWrite(REDPIN, 255);
+  analogWrite(GREENPIN, 255);
+  analogWrite(BLUEPIN, 90);
 }
 
 void colorfade() {
