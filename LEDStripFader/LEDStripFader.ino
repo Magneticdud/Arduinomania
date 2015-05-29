@@ -5,6 +5,7 @@
 #define REDPIN 5
 #define GREENPIN 6
 #define BLUEPIN 3
+#define LIGHTPIN 9
  
 #define FADESPEED 5     // make this higher to slow down
  
@@ -12,14 +13,25 @@ void setup() {
   pinMode(REDPIN, OUTPUT);
   pinMode(GREENPIN, OUTPUT);
   pinMode(BLUEPIN, OUTPUT);
+  pinMode(LIGHTPIN, OUTPUT);
 }
  
  
 void loop() {
-  //colorfade();
-  analogWrite(REDPIN, 255);
-  analogWrite(GREENPIN, 255);
-  analogWrite(BLUEPIN, 90);
+  colorfade();
+  lightfade();
+}
+
+void lightfade(){
+  int l;
+  for (l = 0; l <= 256; l++) { 
+    analogWrite(LIGHTPIN, l);
+    delay(FADESPEED*5);
+  }
+  for (l = 255; l >= 0; l--) { 
+    analogWrite(LIGHTPIN, l);
+    delay(FADESPEED*5);
+  }
 }
 
 void colorfade() {
