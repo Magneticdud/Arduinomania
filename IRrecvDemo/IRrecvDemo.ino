@@ -1,12 +1,10 @@
 /*
- * IRremote: IRrecvDemo - demonstrates receiving IR codes with IRrecv
- * An IR detector/demodulator must be connected to the input RECV_PIN.
- * Version 0.1 July, 2009
- * Copyright 2009 Ken Shirriff
- * http://arcfn.com
+ * based on IRremote: IRrecvDemo by Ken Shirriff
+ * now it will be more bloated
  */
 
 #include <IRremote2.h>
+#include "Keyboard.h"
 
 int RECV_PIN = 11;
 
@@ -18,11 +16,18 @@ void setup()
 {
   Serial.begin(9600);
   irrecv.enableIRIn(); // Start the receiver
+  Keyboard.begin(); //initialize keyboard mode
 }
 
 void loop() {
   if (irrecv.decode(&results)) {
-    Serial.println(results.value, HEX);
+    //Serial.println(results.value, HEX);
+    Serial.println(results.value);
+    //if red button on my remote is pressed
+    if (String(results.value)=="3298349655") {
+      Keyboard.write('R');
+      Serial.println("RED pressed!");
+    }
     irrecv.resume(); // Receive the next value
   }
 }
