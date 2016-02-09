@@ -1,18 +1,23 @@
 // Date and time functions using a DS1307 RTC connected via I2C and Wire lib
-
 #include <Wire.h>
 #include "RTClib.h"
 
+#if defined(ARDUINO_ARCH_SAMD)  // for Zero, output on USB Serial console
+   #define Serial SerialUSB
+#endif
+
 RTC_DS1307 rtc;
 
+char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
 void setup () {
+  while (!Serial);  // for Leonardo/Micro/Zero
+
   Serial.begin(57600);
-#ifdef AVR
-  Wire.begin();
-#else
-  Wire1.begin(); // Shield I2C pins connect to alt I2C bus on Arduino Due
-#endif
-  rtc.begin();
+  if (! rtc.begin()) {
+    Serial.println("Couldn't find RTC");
+    while (1);
+  }
 
   if (! rtc.isrunning()) {
     Serial.println("RTC is NOT running!");
@@ -32,7 +37,9 @@ void loop () {
     Serial.print(now.month(), DEC);
     Serial.print('/');
     Serial.print(now.day(), DEC);
-    Serial.print(' ');
+    Serial.print(" (");
+    Serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
+    Serial.print(") ");
     Serial.print(now.hour(), DEC);
     Serial.print(':');
     Serial.print(now.minute(), DEC);
@@ -47,7 +54,7 @@ void loop () {
     Serial.println("d");
     
     // calculate a date which is 7 days and 30 seconds into the future
-    DateTime future (now.unixtime() + 7 * 86400L + 30);
+    DateTime future (now + TimeSpan(7,12,30,6));
     
     Serial.print(" now + 7d + 30s: ");
     Serial.print(future.year(), DEC);
