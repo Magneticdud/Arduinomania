@@ -21,12 +21,11 @@ void setup()
 
 void loop() {
   if (irrecv.decode(&results)) {
-    //Serial.println(results.value, HEX);
-    Serial.println(results.value);
-    Keyboard.print(results.value);
-    Keyboard.write(176); //press enter because i dunno why, println doesnt send it
+    Serial.println(results.value,HEX);
+    Keyboard.print(results.value,HEX);
+    Keyboard.write(0xB0); //press enter because i dunno why, println doesnt send it
     //if red button on my remote is pressed
-    if (String(results.value)=="3298349655") {
+    if (results.value==0xC498D257) {
       Keyboard.write('R');
       Serial.println("RED pressed!");
     }
