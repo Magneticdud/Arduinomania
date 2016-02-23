@@ -1,5 +1,5 @@
 //keys to press on Transmission, and IR hex code on Receiving
-//receiving codes from a MCE Remote
+//receiving codes from a random Panasonic Remote
 
 const int leftclickR = 0;
 const int leftclickT = 0;
@@ -10,21 +10,21 @@ const int windowskeyT = 0;
 //send ctrl+d to make the auto3d menu appear
 const int auto3dswitchR = 0;
 const int auto3dswitchT = 0;
-const int leftarrowR = 0;
+const int leftarrowR = 0xA5DB7F00;
 const int leftarrowT = 0;
-const int rightarrowR = 0;
+const int rightarrowR = 0x4296B834;
 const int rightarrowT = 0;
-const int uparrowR = 0;
+const int uparrowR = 0x25ADDEF8;
 const int uparrowT = 0;
-const int downarrowR = 0;
+const int downarrowR = 0xC1B35862;
 const int downarrowT = 0;
 //home is H on mediaportal
 const int homeR = 0;
 const int homeT = 0;
-const int enterR = 0;
+const int enterR = 0xD929863E;
 const int enterT = 0;
 //pause is spacebar on mediaportal
-const int pauseR = 0;
+const int pauseR = 0x25ADDEF8; //also play
 const int pauseT = 0;
 //first item is home key
 const int firstR = 0;
@@ -45,10 +45,10 @@ const int muteT = 0;
 const int playallR = 0;
 const int playallT = 0;
 //B is stop
-const int stopR = 0;
+const int stopR = 0xD929863E;
 const int stopT = 0;
 //F3 is show info
-const int showinfoR = 0;
+const int showinfoR = 0xDD81310E;
 const int showinfoT = 0;
 //F5 is rewind
 const int rewindR = 0;
@@ -65,7 +65,7 @@ const int playnextT = 0;
 //F9 is show context menu
 const int showcontextR = 0;
 const int showcontextT = 0;
-const int ESCR = 0;
+const int ESCR = 0x3D240CD4;
 const int ESCT = 0;
 const int ALTF4R = 0;
 const int ALTF4T = 0;
@@ -78,26 +78,26 @@ const int PIPT = 0;
 // R records
 const int recR = 0;
 const int recT = 0;
-const int key1R = 0;
+const int key1R = 0xBA495DFC;
 const int key1T = 0;
-const int key2R = 0;
+const int key2R = 0xED039CDE;
 const int key2T = 0;
-const int key3R = 0;
+const int key3R = 0xDC8D6CD2;
 const int key3T = 0;
-const int key4R = 0;
+const int key4R = 072A84008;
 const int key4T = 0;
-const int key5R = 0;
+const int key5R = 0x9BC76C0;
 const int key5T = 0;
-const int key6R = 0;
+const int key6R = 0x8F528812;
 const int key6T = 0;
-const int key7R = 0;
+const int key7R = 0xC9FE570E;
 const int key7T = 0;
-const int key8R = 0;
+const int key8R = 0x40325FCC;
 const int key8T = 0;
-const int key9R = 0;
+const int key9R = 0x9A7316D8;
 const int key9T = 0;
 //0 is also used to delete recordings and the last channel, consider adding a duplicate key?
-const int key0R = 0;
+const int key0R = 0x247E57FA;
 const int key0T = 0;
 //Y is show/hide OSD
 const int osdshowR = 0;
