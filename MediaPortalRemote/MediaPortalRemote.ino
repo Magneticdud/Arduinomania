@@ -41,6 +41,42 @@ void loop() {
       case stopR:
         Keyboard.write(stopT);
         break;
+      case showinfoR:
+        Keyboard.write(showinfoT);
+        break;
+      case ESCR:
+        Keyboard.write(ESCT);
+        break;
+      case key1R:
+        Keyboard.write(key1T);
+        break;
+      case key2R:
+        Keyboard.write(key2T);
+        break;
+      case key3R:
+        Keyboard.write(key3T);
+        break;
+      case key4R:
+        Keyboard.write(key4T);
+        break;
+      case key5R:
+        Keyboard.write(key5T);
+        break;
+      case key6R:
+        Keyboard.write(key6T);
+        break;
+      case key7R:
+        Keyboard.write(key7T);
+        break;
+      case key8R:
+        Keyboard.write(key8T);
+        break;
+      case key9R:
+        Keyboard.write(key9T);
+        break;
+      case key0R:
+        Keyboard.write(key0T);
+        break;
       default: 
         // do something when no case? Don't need
         break;
