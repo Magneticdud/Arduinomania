@@ -2,7 +2,7 @@
 #include "Keyboard.h"
 #include "keys.h"
 
-int RECV_PIN = 11;
+const int RECV_PIN = 11;
 
 IRrecv irrecv(RECV_PIN);
 
@@ -18,13 +18,18 @@ void setup()
 void loop() {
   if (irrecv.decode(&results)) {
     Serial.println(results.value,HEX);
-    Keyboard.print(results.value,HEX);
-    Keyboard.write(0xB0); //press enter because i dunno why, println doesnt send it
-    //if red button on my remote is pressed
-    if (results.value==0xC498D257) {
-      Keyboard.write('R');
-      Serial.println("RED pressed!");
+    switch (results.value) {
+      case leftarrowR:
+        Keyboard.write(leftarrowT);
+        break;
+      case rightarrowR:
+        Keyboard.write(rightarrowT);
+        break;
+      default: 
+        // do something when no case? Don't need
+      break;
     }
+    delay(100);
     irrecv.resume(); // Receive the next value
   }
 }
