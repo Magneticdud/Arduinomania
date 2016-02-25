@@ -25,9 +25,15 @@ void loop() {
       case rightarrowR:
         Keyboard.write(rightarrowT);
         break;
+      case uparrowR:
+        Keyboard.write(uparrowT);
+        break;
+      case downarrowR:
+        Keyboard.write(downarrowT);
+        break;
       default: 
         // do something when no case? Don't need
-      break;
+        break;
     }
     delay(100);
     irrecv.resume(); // Receive the next value
