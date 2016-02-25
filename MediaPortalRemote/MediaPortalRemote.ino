@@ -32,6 +32,15 @@ void loop() {
       case downarrowR:
         Keyboard.write(downarrowT);
         break;
+      case enterR:
+        Keyboard.write(enterT);
+        break;
+      case pauseR:
+        Keyboard.write(pauseT);
+        break;
+      case stopR:
+        Keyboard.write(stopT);
+        break;
       default: 
         // do something when no case? Don't need
         break;

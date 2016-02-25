@@ -24,7 +24,7 @@ const char homeT = 'h';  //i think it could be also int, anyways it's stored as 
 const int enterR = 0xD929863E;
 const int enterT = KEY_RETURN;
 //pause is spacebar on mediaportal
-const int pauseR = 0x25ADDEF8; //also play
+const int pauseR = 0x25ADDEE8; //also play //wrong code
 const int pauseT = KEY_BACKSPACE;
 //first item is home key
 const int firstR = 0;
@@ -45,7 +45,7 @@ const int nextpageT = KEY_PAGE_DOWN;
 const int playallR = 0;
 const char playallT = 'p';
 //B is stop
-const int stopR = 0xD929863E;
+const int stopR = 0xE929863E; //wrong code
 const char stopT = 'b';
 //F3 is show info
 const int showinfoR = 0xDD81310E;
