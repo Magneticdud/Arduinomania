@@ -18,9 +18,9 @@ const int uparrowR = 0x25ADDEF8;
 const int uparrowT = KEY_UP_ARROW;
 const int downarrowR = 0xC1B35862;
 const int downarrowT = KEY_DOWN_ARROW;
-//home is H on mediaportal
-const int homeR = 0;
-const char homeT = 'h';  //i think it could be also int, anyways it's stored as 0x68
+//home is H on mediaportal dont need it
+//const int homeR = 0;
+//const char homeT = 'h';  //i think it could be also int, anyways it's stored as 0x68
 const int enterR = 0xD929863E;
 const int enterT = KEY_RETURN;
 //pause is spacebar on mediaportal
@@ -56,11 +56,11 @@ const int rewindT = KEY_F5;
 //F6 is Fast forward
 const int ffR = 0;
 const int ffT = KEY_F6;
-//F7 is Play previous
-const int playpreviousR = 0;
+//F7 is Play previous and switch channel
+const int playpreviousR = 0xF0211C96;
 const int playpreviousT = KEY_F7;
-//F8 is Play next
-const int playnextR = 0;
+//F8 is Play next and switch channel
+const int playnextR = 0x1FEC4C3C;
 const int playnextT = KEY_F8;
 //F9 is show context menu
 const int showcontextR = 0;

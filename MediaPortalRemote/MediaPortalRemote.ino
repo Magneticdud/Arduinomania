@@ -77,6 +77,12 @@ void loop() {
       case key0R:
         Keyboard.write(key0T);
         break;
+      case playpreviousR:
+        Keyboard.write(playpreviousT);
+        break;
+      case playnextR:
+        Keyboard.write(playnextT);
+        break;
       default: 
         // do something when no case? Don't need
         break;
