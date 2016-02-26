@@ -83,6 +83,27 @@ void loop() {
       case playnextR:
         Keyboard.write(playnextT);
         break;
+      case windowskeyR:
+        Keyboard.write(windowskeyT);
+        break;
+      case showcontextR:
+        Keyboard.write(showcontextT);
+        break;
+      case PIPR:
+        Keyboard.write(PIPT);
+        break;
+      case redR:
+        Keyboard.write(redT);
+        break;
+      case greenR:
+        Keyboard.write(greenT);
+        break;
+      case yellowR:
+        Keyboard.write(yellowT);
+        break;
+      case blueR:
+        Keyboard.write(blueT);
+        break;
       default: 
         // do something when no case? Don't need
         break;

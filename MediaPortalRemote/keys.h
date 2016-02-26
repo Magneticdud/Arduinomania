@@ -1,11 +1,11 @@
 //keys to press on Transmission, and IR hex code on Receiving
 //receiving codes from a random Panasonic Remote
 
-const int leftclickR = 0;
+/*const int leftclickR = 0;
 const int leftclickT = 0;
 const int rightclickR = 0;
-const int rightclickT = 0;
-const int windowskeyR = 0;
+const int rightclickT = 0;*/
+const int windowskeyR = 0x1EEB72DE;
 const int windowskeyT = KEY_LEFT_GUI;
 //send ctrl+d to make the auto3d menu appear
 const int auto3dswitchR = 0;
@@ -63,7 +63,7 @@ const int playpreviousT = KEY_F7;
 const int playnextR = 0x1FEC4C3C;
 const int playnextT = KEY_F8;
 //F9 is show context menu
-const int showcontextR = 0;
+const int showcontextR = 0x2389FD1B;
 const int showcontextT = KEY_F9;
 const int ESCR = 0x3D240CD4;
 const int ESCT = KEY_ESC;
@@ -73,7 +73,7 @@ const int ALTF4T = 0;
 const int parentfolderR = 0;
 const char parentfolderT = 'u';
 // X Switch between MediaPortal GUI and the currently playing media, such as fullscreen tv, video, visualization or Now Playing
-const int PIPR = 0;
+const int PIPR = 0x1D4F0764;
 const char PIPT = 'x';
 // R records
 const int recR = 0;
@@ -103,5 +103,19 @@ const char key0T = '0';
 const int osdshowR = 0;
 const char osdshowT = 'y';
 //F1 reset to default
-const int defaultR = 0;
-const int defaultT = KEY_F1;
+//const int defaultR = 0;
+//const int defaultT = KEY_F1;
+const int redR = 0xDFDACAC5;
+const char redT = 'q';
+const int greenR = 0x8406E731;
+const char greenT = 'w';
+const int yellowR = 0x1451B3;
+const char yellowT = 'o';
+const int blueR = 0xEC2A5E1B;
+const char blueT = 'p';
+const int audioR = 0;
+const char audioT = 'a';
+const int subsR = 0;
+const char subsT = 'l';
+const int zoomR = 0;
+const char zoomT = 's';
