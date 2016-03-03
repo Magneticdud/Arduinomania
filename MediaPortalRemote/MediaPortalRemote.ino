@@ -104,6 +104,33 @@ void loop() {
       case blueR:
         Keyboard.write(blueT);
         break;
+      case subsR:
+        Keyboard.write(subsT);
+        break;
+      case audioR:
+        Keyboard.write(audioT);
+        break;
+      case zoomR:
+        Keyboard.write(zoomT);
+        break;
+      case recR:
+        Keyboard.write(recT);
+        break;
+      case ffR:
+        Keyboard.write(ffT);
+        break;
+      case rewindR:
+        Keyboard.write(rewindT);
+        break;
+      case nextpageR:
+        Keyboard.write(nextpageT);
+        break;
+      case previouspageR:
+        Keyboard.write(previouspageT);
+        break;
+      case auto3dswitchR:
+        Keyboard.write(auto3dswitchT);
+        break;
       default: 
         // do something when no case? Don't need
         break;

@@ -8,8 +8,8 @@ const int rightclickT = 0;*/
 const int windowskeyR = 0x1EEB72DE;
 const int windowskeyT = KEY_LEFT_GUI;
 //send ctrl+d to make the auto3d menu appear
-const int auto3dswitchR = 0;
-const int auto3dswitchT = 0;
+const int auto3dswitchR = 0xE52D8932;
+const int auto3dswitchT = 'd';
 const int leftarrowR = 0xA5DB7F00;
 const int leftarrowT = KEY_LEFT_ARROW;
 const int rightarrowR = 0x4296B834;
@@ -33,10 +33,10 @@ const int firstT = KEY_HOME;
 const int lastR = 0;
 const int lastT = KEY_END;
 //pgup is previous page
-const int previouspageR = 0;
+const int previouspageR = 0xFFFFFFFF;
 const int previouspageT = KEY_PAGE_UP;
 //pgdown is next page
-const int nextpageR = 0;
+const int nextpageR = 0xDBDD58A8;
 const int nextpageT = KEY_PAGE_DOWN;
 //M is mute, don't need
 //const int muteR = 0;
@@ -51,10 +51,10 @@ const char stopT = 'b';
 const int showinfoR = 0xDD81310E;
 const int showinfoT = KEY_F3;
 //F5 is rewind
-const int rewindR = 0;
+const int rewindR = 0x333725A;
 const int rewindT = KEY_F5;
 //F6 is Fast forward
-const int ffR = 0;
+const int ffR = 0xE0B4A864;
 const int ffT = KEY_F6;
 //F7 is Play previous and switch channel
 const int playpreviousR = 0xF0211C96;
@@ -76,7 +76,7 @@ const char parentfolderT = 'u';
 const int PIPR = 0x1D4F0764;
 const char PIPT = 'x';
 // R records
-const int recR = 0;
+const int recR = 0x5457692E;
 const char recT = 'r';
 const int key1R = 0xBA495DFC;
 const char key1T = '1';
@@ -113,9 +113,9 @@ const int yellowR = 0x1451B3;
 const char yellowT = 'o';
 const int blueR = 0xEC2A5E1B;
 const char blueT = 'p';
-const int audioR = 0;
+const int audioR = 0x56623548;
 const char audioT = 'a';
-const int subsR = 0;
+const int subsR = 0xB84BC113;
 const char subsT = 'l';
-const int zoomR = 0;
+const int zoomR = 0x136B9A5C;
 const char zoomT = 's';
