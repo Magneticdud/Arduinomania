@@ -11,7 +11,23 @@ decode_results results;
 
 void setup()
 {
+  // initialize digital pin 13 as an output.
+  pinMode(13, OUTPUT);
+  //We have to wait for Windows loading, or sometimes the keyboard doesn't work.
   Serial.begin(9600);
+  Serial.println("Loading...");
+  digitalWrite(13, HIGH);   // turn the LED on, meaning LOADING
+  delay(5000);              // wait for 20 seconds
+  Serial.println("Loading... 20% ...");
+  delay(5000);              
+  Serial.println("Loading... 40% ...");
+  delay(5000);              
+  Serial.println("Loading... 60% ...");
+  delay(5000);              
+  Serial.println("Loading... 80% ...");
+  delay(5000);              
+  digitalWrite(13, LOW);    // turn the LED off
+  Serial.println("Ready");
   irrecv.enableIRIn(); // Start the receiver
   Keyboard.begin(); //initialize keyboard mode
 }
